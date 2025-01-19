@@ -16,12 +16,17 @@ function App() {
     setContent(selectedButton);
   }
 
-  let text = <div>smit</div>;
+  const data = {
+    age: 20,
+    name: "smit",
+  };
+
+  // let text = <div>smit</div>;
   return (
     <>
-      {text}
+      {/* {text} */}
       <section>
-        <Header />
+        <Header {...data} />
       </section>
       <section>
         <h3>{description}</h3>
@@ -61,9 +66,11 @@ function App() {
 }
 export default App;
 
-function Header() {
+function Header({ age, name }) {
   return (
     <header>
+      <h3>{age}</h3>
+      <h3>{name}</h3>
       <h1>Header</h1>
     </header>
   );
