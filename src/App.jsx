@@ -1,15 +1,21 @@
 /* eslint-disable react/prop-types */
-import image1 from "../assets/images1.jpg";
-import image2 from "../assets/images2.jpg";
+
 import { useState } from "react";
-const readDescription = ["Fundamental", "Crucial", "Core"];
+// import { Fragment } from "react";
 
-function generateRandomInt(max) {
-  return Math.floor(Math.random() * max + 1);
-}
+import image1 from "../assets/images1.jpg";
+// import image2 from "../assets/images2.jpg";
+
+import Section from "./components/Sections";
+import Tabs from "./Tabs";
+
 function App() {
-  const [content, setContent] = useState("please select a tab");
+  const [content, setContent] = useState("Tab-1_Content");
 
+  function generateRandomInt(max) {
+    return Math.floor(Math.random() * max + 1);
+  }
+  const readDescription = ["Fundamental", "Crucial", "Core"];
   const description = readDescription[generateRandomInt(3) - 1];
 
   function handleSelect(selectedButton) {
@@ -21,46 +27,60 @@ function App() {
     name: "smit",
   };
 
-  // let text = <div>smit</div>;
+  // let text = <div>smit</div>; we can fucking do this !!
   return (
     <>
       {/* {text} */}
-      <section>
+      <Section title="Rest Operator">
         <Header {...data} />
-      </section>
-      <section>
-        <h3>{description}</h3>
+      </Section>
+      <hr />
+      <Section title="Dynamic text">
+        <h3>Dynamic text: {description}</h3>
+      </Section>
+      <hr />
+      <Section title="Image import in React">
         <CoreComp title="Forest - dark" image={image1} />
-        <CoreComp title="Forest - warm" image={image2} />
-      </section>
-      <section>
-        <TabButton
-          isSelected={content === "tab1"}
-          onSelect={() => handleSelect("tab1")}
+        {/* <CoreComp title="Forest - warm" image={image2} /> */}
+      </Section>
+      <hr />
+      <Section title="Tabs" className="tab-container">
+        <Tabs
+          buttonWrapper="menu" // default set to menu
+          // buttonWrapper={Section}
+          buttons={
+            <>
+              <TabButton
+                isSelected={content === "Tab-1_Content"}
+                onClick={() => handleSelect("Tab-1_Content")}
+              >
+                Tab-1
+              </TabButton>
+              <TabButton
+                isSelected={content === "Tab-2_Content"}
+                onClick={() => handleSelect("Tab-2_Content")}
+              >
+                Tab-2
+              </TabButton>
+              <TabButton
+                isSelected={content === "Tab-3_Content"}
+                onClick={() => handleSelect("Tab-3_Content")}
+              >
+                Tab-3
+              </TabButton>
+              <TabButton
+                isSelected={content === "Tab-4_Content"}
+                onClick={() => handleSelect("Tab-4_Content")}
+              >
+                Tab-4
+              </TabButton>
+            </>
+          }
         >
-          tab1
-        </TabButton>
-        <TabButton
-          isSelected={content === "tab2"}
-          onSelect={() => handleSelect("tab2")}
-        >
-          tab2
-        </TabButton>
-        <TabButton
-          isSelected={content === "tab3"}
-          onSelect={() => handleSelect("tab3")}
-        >
-          tab3
-        </TabButton>
-        <TabButton
-          isSelected={content === "tab4"}
-          onSelect={() => handleSelect("tab4")}
-        >
-          tab4
-        </TabButton>
-        <br />
-        {content}
-      </section>
+          {content}
+        </Tabs>
+      </Section>
+      <hr />
     </>
   );
 }
@@ -69,9 +89,9 @@ export default App;
 function Header({ age, name }) {
   return (
     <header>
-      <h3>{age}</h3>
-      <h3>{name}</h3>
-      <h1>Header</h1>
+      <h3>Header</h3>
+      <h4>{age}</h4>
+      <h4>{name}</h4>
     </header>
   );
 }
@@ -79,16 +99,16 @@ function Header({ age, name }) {
 function CoreComp({ title, image }) {
   return (
     <div>
-      <h1>{title}</h1>
+      <h3>{title}</h3>
       <img src={image} alt="..." />
     </div>
   );
 }
 
-function TabButton({ children, onSelect, isSelected }) {
+function TabButton({ children, isSelected, ...props }) {
   return (
     <>
-      <button className={isSelected ? "active" : null} onClick={onSelect}>
+      <button className={isSelected ? "active" : null} {...props}>
         {children}
       </button>
     </>

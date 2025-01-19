@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .active {
-  background: whitesmoke;
+  background: rgba(94, 214, 102, 0.693);
   color: #242424;
 }
 button {
@@ -23,4 +23,13 @@ button {
   cursor: pointer;
   border-radius: 1rem;
   padding: 0.4rem;
+}
+
+.tab-container {
+  height: 10rem;
+  width: 20rem;
+  background: gainsboro;
+  color: #242424;
+  border-radius: 1rem;
+  text-align: center;
 }
