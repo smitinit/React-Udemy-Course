@@ -5,8 +5,9 @@ console.log(apiKey);
 import * as test from "./test.js";
 console.log(test.default);
 
-let $_$_$_ = "fjsdklf";
-console.log($_$_$_);
+let $_$_$_ = "tea";
+let _$$$ = "smit";
+console.log($_$_$_, _$$$);
 
 ((a, b) => console.log(a + b))(10, 10);
 
@@ -16,7 +17,7 @@ const user = {
 };
 console.log(user);
 
-const arr = ["amti", "smit", "asdf", "jkl"];
+const arr = ["tea", "smit", "asdf", "jkl"];
 
 const index = arr.findIndex((item) => item === "smit");
 console.log(index);
