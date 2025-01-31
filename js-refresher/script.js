@@ -14,6 +14,9 @@ console.log($_$_$_, _$$$);
 const user = {
   age: 20,
   name: "smit",
+  greet() {
+    console.log(`Hi ${this.name}`);
+  },
 };
 console.log(user);
 
